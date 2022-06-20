@@ -17,6 +17,8 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => ResultData(),
       child: MaterialApp(
+        theme: ThemeData.dark(),
+        debugShowCheckedModeBanner: false,
         initialRoute: WelcomeScreen.id,
         routes: {
           WelcomeScreen.id: (context) => WelcomeScreen(),

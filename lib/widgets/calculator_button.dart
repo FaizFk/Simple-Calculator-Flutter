@@ -5,8 +5,9 @@ import 'package:provider/provider.dart';
 
 class CalculatorButton extends StatelessWidget {
   String symbol;
+  Color? colour;
   VoidCallback? specialCallBack;
-  CalculatorButton({this.symbol = '', this.specialCallBack});
+  CalculatorButton({this.symbol = '', this.specialCallBack, this.colour});
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +22,18 @@ class CalculatorButton extends StatelessWidget {
         height: 60,
         width: 60,
         alignment: Alignment.center,
-        color: Colors.pink,
+        color: colour != null ? colour : Colors.pink,
         margin: const EdgeInsets.all(8),
-        padding: const EdgeInsets.all(8),
-        child: Text(
-          '$symbol',
-          style: GoogleFonts.rubik(fontSize: 18, color: Colors.white),
-        ),
+        padding: const EdgeInsets.all(6),
+        child: symbol == '<'
+            ? Icon(Icons.backspace_rounded)
+            : Text(
+                '$symbol',
+                style: GoogleFonts.rubik(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              ),
       ),
     );
   }
